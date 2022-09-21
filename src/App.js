@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Title } from "./components/Title";
+import { Flex } from "./components/Flex";
+import styled from "styled-components";
+import { AddPostForm } from "./components/AddPostForm";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { PostContainer } from "./components/PostContainer";
 
-function App() {
+const AppWrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+`;
+
+export const App = () => {
+  const [posts, setPosts] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <Flex justify="center" margin="50px 0 30px">
+        <Title padding="20px 50px" borderRadius="10px" fontSize="40px">
+          Blog React application
+        </Title>
+      </Flex>
+      <Routes>
+        <Route path="/" element={<PostContainer posts={posts} setPosts={setPosts} />} />
+        <Route path="/form" element={<AddPostForm posts={posts} setPosts={setPosts} />} />
+      </Routes>
+    </AppWrapper>
   );
-}
-
-export default App;
+};
