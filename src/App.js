@@ -22,8 +22,8 @@ export const App = () => {
         </Title>
       </Flex>
       <Routes>
-        <Route path="/" element={<PostContainer posts={posts} setPosts={setPosts} />} />
-        <Route path="/form" element={<AddPostForm posts={posts} setPosts={setPosts} />} />
+        <Route path="/blog-react-application/" element={<PostContainer posts={posts} setPosts={setPosts} />} />
+        <Route path="/blog-react-application/form" element={<AddPostForm posts={posts} setPosts={setPosts} />} />
       </Routes>
     </AppWrapper>
   );
