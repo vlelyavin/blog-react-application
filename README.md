@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# This is solution for the test task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To launch the solution, just clone the repository to your PC.
+This project has also been hosted on GitHub pages, in case its more comfortable for you.
 
 ## Available Scripts
 
