@@ -1,8 +1,8 @@
 import React from "react";
-import { Container } from "./Container";
+import { Container } from "./general/Container";
+import { Flex } from "./general/Flex";
 import { Posts } from "./Posts";
 import { AddPostButton } from "./AddPostButton";
-import { Flex } from "./Flex";
 import { Link } from "react-router-dom";
 
 export const PostContainer = ({ posts, setPosts }) => {

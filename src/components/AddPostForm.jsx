@@ -1,11 +1,12 @@
 import React from "react";
-import styled, { ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { actionAddPost } from "../actions/PostActions";
-import { useDispatch } from "react-redux";
-import { Flex } from "./Flex";
-import { Title } from "./Title";
+import { Button } from "./general/Button";
+import { Flex } from "./general/Flex";
+import { Input } from "./general/Input";
+import { Textarea } from "./general/Textarea";
+import { Title } from "./general/Title";
 
 const StyledForm = styled.form`
   max-width: 800px;
@@ -13,50 +14,15 @@ const StyledForm = styled.form`
   margin: 0 auto;
 `;
 
-const StyledInput = styled.input`
-  width: 100%;
-  font-family: ${(props) => props.theme.fontFamily};
+const StyledInput = styled(Input)`
   height: 50px;
-  font-size: ${(props) => props.theme.fontSize};
-  border: none;
-  padding: ${(props) => props.padding || "0"};
-  border-radius: ${(props) => props.theme.borderRadius};
-  &:focus {
-    outline: none;
-  }
 `;
 
-const StyledTextarea = styled.textarea`
-  width: 100%;
+const StyledFormTextarea = styled(Textarea)`
   height: 30vh;
-  margin: ${(props) => props.margin || "0"};
-  padding: ${(props) => props.padding || "0"};
-  font-size: ${(props) => props.theme.fontSize};
-  font-family: ${(props) => props.theme.fontFamily};
-  border-radius: ${(props) => props.theme.borderRadius};
-  resize: none;
-  border: none;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const StyledButton = styled.button`
-  color: ${(props) => props.background || props.theme.colors.primary};
-  padding: 10px 20px;
-  margin: ${(props) => props.margin || "0"};
-  font-size: ${(props) => props.fontSize || props.theme.fontSize};
-  border-radius: ${(props) => props.borderRadius || props.theme.borderRadius};
-  text-transform: capitalize;
-  border: none;
-  background: ${(props) => props.background || props.theme.colors.secondary};
-  &:focus {
-    outline: none;
-  }
 `;
 
 export const AddPostForm = () => {
-  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -64,7 +30,7 @@ export const AddPostForm = () => {
     },
     validationSchema: yup.object().shape({
       title: yup.string().required("Title should not be empty"),
-      body: yup.string().required("I need some info about that post"),
+      body: yup.string().required("Enter some info about that post"),
     }),
     onSubmit: (values, { resetForm }) => {
       const myHeaders = new Headers();
@@ -84,19 +50,11 @@ export const AddPostForm = () => {
       };
 
       const addPostRequest = async () => {
-        const request = await fetch("https://bloggy-api.herokuapp.com/posts", requestOptions);
-        const response = await request.json();
-        console.log(response);
+        await fetch("https://bloggy-api.herokuapp.com/posts", requestOptions);
       };
       addPostRequest();
-      dispatch(
-        actionAddPost({
-          id: Date.now(),
-          title: formik.values.title,
-          body: formik.values.body,
-        })
-      );
       resetForm();
+      alert("Post added successfully. Click on title to return to the main page");
     },
   });
 
@@ -108,27 +66,26 @@ export const AddPostForm = () => {
         </Title>
         <StyledInput
           padding="0 15px"
-          margin="0 0 20px 0"
           onChange={formik.handleChange}
           type="text"
           name="title"
           value={formik.values.title}
           placeholder="Title"
         />
-        {formik.errors && <span className="post__errors">{formik.errors.title}</span>}
-        <StyledTextarea
+        {formik.errors && <span>{formik.errors.title}</span>}
+        <StyledFormTextarea
           margin="30px 0 0 0"
           padding="15px"
           onChange={formik.handleChange}
           type="text"
           name="body"
           value={formik.values.body}
-          placeholder="I need some info about that post"
+          placeholder="Enter some info about that post"
         />
-        {formik.errors && <span className="post__errors">{formik.errors.body}</span>}
-        <StyledButton className="post__submit" type="submit" fontSize="30px" margin="30px 0 0 0">
+        {formik.errors && <span>{formik.errors.body}</span>}
+        <Button className="post__submit" type="submit" fontSize="30px" margin="30px 0 0 0">
           Confirm
-        </StyledButton>
+        </Button>
       </Flex>
     </StyledForm>
   );

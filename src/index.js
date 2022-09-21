@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { postStore } from "./components/store";
-import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 const theme = {
@@ -25,16 +23,19 @@ const Global = createGlobalStyle`
 };
 body {
   background: #e8e8e8;
+  font-size: ${theme.fontSize};
+}
+a {
+  text-decoration:none;
+  color: ${theme.colors.secondary};
 }`;
 
 const root = ReactDOM.createRoot(document.getElementById("application"));
 root.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <Provider store={postStore}>
-        <Global />
-        <App />
-      </Provider>
+      <Global />
+      <App />
     </ThemeProvider>
   </BrowserRouter>
 );
