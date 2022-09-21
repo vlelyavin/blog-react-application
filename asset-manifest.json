@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/blog-react-application/static/js/main.442f58e3.js",
+    "main.js": "/blog-react-application/static/js/main.dd89cb1e.js",
     "index.html": "/blog-react-application/index.html",
-    "main.442f58e3.js.map": "/blog-react-application/static/js/main.442f58e3.js.map"
+    "main.dd89cb1e.js.map": "/blog-react-application/static/js/main.dd89cb1e.js.map"
   },
   "entrypoints": [
-    "static/js/main.442f58e3.js"
+    "static/js/main.dd89cb1e.js"
   ]
 }
