@@ -1,4 +1,4 @@
-# This is solution for the test task
+# This is a test assignment solution
 
 To launch the solution, just clone the repository to your PC and install all npm packages.
 This project has also been uploaded to GitHub pages, if it is more convenient for you.
