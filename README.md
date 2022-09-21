@@ -19,7 +19,7 @@ To create a new post, simply click on the "plus" square in the bottom right corn
 there will be a simple form. To return to the main page, click on the large title.
 
 ### `update post information`
-To update post info, click the "update" button enter new data and click the button again.
+To update post info, click the "update" button, enter new data and click the button again.
 
 ### `delete post`
 Just click the "delete" button
