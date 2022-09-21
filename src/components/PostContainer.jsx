@@ -11,7 +11,7 @@ export const PostContainer = ({ posts, setPosts }) => {
       <Container>
         <Posts posts={posts} setPosts={setPosts} />
       </Container>
-      <Link to="/form">
+      <Link to="/blog-react-application/form">
         <AddPostButton>+</AddPostButton>
       </Link>
     </Flex>
